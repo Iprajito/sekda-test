@@ -1,0 +1,35 @@
+<form action="/book/store" method="post">
+    <div class="form-group">
+        <label>Author</label>
+        <input type="text" name="author" value="<%= author %>">
+    </div>
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" value="<%= title %>">
+    </div>
+    <div class="form-group">
+        <label>Borrowed Name</label>
+        <input type="text" name="borrowed_name" value="<%= borrowed_name %>">
+    </div>
+    <div class="form-group">
+        <label>Publish Year</label>
+        <input type="text" name="publish_year" value="<%= publish_year %>">
+    </div>
+    <div class="form-group">
+        <label>Return?</label>
+        <select name="is_returned">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Borrowed Date</label>
+        <input type="date" name="borrowed_date" value="<%= borrowed_date %>">
+    </div>
+    <div class="form-group">
+        <label>Return Date</label>
+        <input type="date" name="return_date" value="<%= return_date %>">
+    </div>
+    <button type="submit" class="btn btn-primary">SIMPAN</button>
+    <button type="reset" class="btn btn-warning">RESET</button>
+</form>

@@ -1,0 +1,64 @@
+<a href="book/create" class="btn btn-md btn-success mb-3">TAMBAH</a>
+<table border="1" width="100%">
+    <thead>
+      <tr>
+        <th scope="col">NO.</th>
+        <th scope="col">Author</th>
+        <th scope="col">Title</th>
+        <th scope="col">Borrowed Name</th>
+        <th scope="col">Publish Year</th>
+        <th scope="col">Return?</th>
+        <th scope="col">Borrowed Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(data.length){
+            
+            for(var i = 0; i< data.length; i++) {%>  
+                <tr>
+                    <th scope="row" class="text-center"><%= (i+1) %></th>
+                    <td><%= data[i].author%></td>
+                    <td><%= data[i].title%></td>
+                    <td><%= data[i].borrowed_name%></td>
+                    <td><%= data[i].publish_year%></td>
+                    <% if(data[i].is_returned == '1') { %>
+                        <td>Yes</td>
+                    <% } else { %>
+                        <td>No</td>
+                    <% } %>
+                    <td><%= data[i].borrowed_date %></td>
+                    <td><%= data[i].return_date%></td>
+                    <td class="text-center">
+                        <a href="/book/edit/<%=data[i].id%>" class="btn btn-sm btn-primary">EDIT</a>
+                        <a onclick="return alert('Are You sure?')" href="/book/delete/<%=data[i].id%>" class="btn btn-sm btn-danger">HAPUS</a>
+                    </td>
+                </tr>
+            <% } 
+        }else{ %>
+            <tr>
+                <td colspan="9">
+                    <div class="alert alert-danger" role="alert">
+                        Data Tidak Ditemukan !
+                    </div>
+                </td>
+            </tr>
+        <% } %>    
+    </tbody>
+</table> 
+<script>
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+</script>
